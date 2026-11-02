@@ -171,7 +171,7 @@ footer{padding:80px 0 40px;border-top:1px solid var(--hair)}
 <!-- HOME -->
 <div class="page" id="page-home">
   <section class="hero">
-    <img src="/_blob/1fec4101de09a244e025f9954d0a3b44" alt="A candlelit red rose archway walkway leading to a wedding mandap at night" fetchpriority="high" width="1024" height="683">
+    <img src="images/red-rose-arch.jpg" alt="A candlelit red rose archway walkway leading to a wedding mandap at night" fetchpriority="high" width="1024" height="683">
     <div class="hero-c">
       <h1>Seven vows, <span class="gold">planned without worry.</span></h1>
       <div class="mono"><span>Jaipur · Serving across India</span><span>Now taking dates from March 2027</span></div>
@@ -201,7 +201,7 @@ footer{padding:80px 0 40px;border-top:1px solid var(--hair)}
   </section>
 
   <section class="reveal">
-    <img class="fullphoto" src="/_blob/a84cb61c4aa572332c4309d2e862d4fb" alt="A grand marigold-garlanded entrance gate lit with brass lamps at a wedding venue" width="1024" height="683" loading="lazy">
+    <img class="fullphoto" src="images/grand-marigold-entrance.jpg" alt="A grand marigold-garlanded entrance gate lit with brass lamps at a wedding venue" width="1024" height="683" loading="lazy">
     <div class="wrap"><p class="mono cap">Grand entrance, Jaipur</p></div>
   </section>
 
@@ -352,22 +352,22 @@ const PACKAGES=[
 const SERVICES=['Planning & coordination','Mandap & decor design','Vendor curation','Guest hospitality','Destination logistics','On-the-day management'];
 const PROCESS=[['Enquire','Two-minute form, no commitment.'],['Consultation','A call within one working day.'],['Proposal','A clear plan and quote.'],['Planning','Weekly check-ins, shared tracker.'],['The wedding days','An on-site team runs the schedule.']];
 const GALLERY=[
- {cat:'Ceremonies',place:'Jaipur',name:'agni-pheras',t:'Havan ceremony with family',real:'970b11d4cdb89c7bafe972f8186fd9e3'},
+ {cat:'Ceremonies',place:'Jaipur',name:'agni-pheras',t:'Havan ceremony with family',real:'images/havan-ceremony.jpg'},
  {cat:'Ceremonies',place:'Udaipur',name:'baraat-horse',t:'Baraat horse silhouette at dusk'},
  {cat:'Ceremonies',place:'Jodhpur',name:'varmala',t:'Varmala hands raising marigold garlands'},
  {cat:'Ceremonies',place:'Jaipur',name:'vidaai',t:'Vidaai petals in farewell'},
- {cat:'Decor',place:'Udaipur',name:'floral-aisle',t:'Red floral mandap aisle',real:'4e7503a0c23786fc58b12484b70c0180'},
- {cat:'Decor',place:'Udaipur',name:'reception-tables',t:'Hanging floral chandelier reception',real:'91fe6bfb91ba445836f0a987d40afbd2'},
- {cat:'Decor',place:'Jaipur',name:'brass-canopy',t:'Fairy-light entrance canopy',real:'102ed8eb829b3e8ffeec3cb927298e07'},
- {cat:'Decor',place:'Jaipur',name:'entrance-gate',t:'Wooden garden entrance',real:'a542e4f5293a3f3535c3096dd323d211'},
- {cat:'Destinations',place:'Udaipur',name:'lake-palace',t:'Floral palace archway swing',real:'b189f920eeee78dbcc5bc87978422175'},
+ {cat:'Decor',place:'Udaipur',name:'floral-aisle',t:'Red floral mandap aisle',real:'images/red-mandap-aisle.jpg'},
+ {cat:'Decor',place:'Udaipur',name:'reception-tables',t:'Hanging floral chandelier reception',real:'images/floral-chandelier.jpg'},
+ {cat:'Decor',place:'Jaipur',name:'brass-canopy',t:'Fairy-light entrance canopy',real:'images/fairy-light-entrance.jpg'},
+ {cat:'Decor',place:'Jaipur',name:'entrance-gate',t:'Wooden garden entrance',real:'images/nature-wooden-entrance.jpg'},
+ {cat:'Destinations',place:'Udaipur',name:'lake-palace',t:'Floral palace archway swing',real:'images/floral-palace-swing.jpg'},
  {cat:'Destinations',place:'Jaisalmer',name:'desert-camp',t:'Desert camp at dusk'},
  {cat:'Destinations',place:'Goa',name:'beach-mandap',t:'Driftwood beach mandap'},
  {cat:'Destinations',place:'Shimla',name:'hill-lawn',t:'Misty hill-resort lawn'},
- {cat:'Details',place:'Jaipur',name:'mehendi-hands',t:'Ring on a hennaed hand',real:'e75bf76097b51dbb9e3ec4e487178b9f'},
+ {cat:'Details',place:'Jaipur',name:'mehendi-hands',t:'Ring on a hennaed hand',real:'images/ring-exchange.jpg'},
  {cat:'Details',place:'Udaipur',name:'invitation-suite',t:'Letterpress invitation suite'},
  {cat:'Details',place:'Jodhpur',name:'haldi-bowls',t:'Haldi bowls on brass'},
- {cat:'Details',place:'Jaipur',name:'polki-jewellery',t:'Mehendi hands with bangles',real:'a82a7debfdbd659a2600cadd29c3a133'}
+ {cat:'Details',place:'Jaipur',name:'polki-jewellery',t:'Mehendi hands with bangles',real:'images/mehendi-bangles.jpg'}
 ];
 
 function gimg(seed){return `https://picsum.photos/seed/pheras-${seed}/600/500`}
@@ -383,7 +383,7 @@ document.getElementById('pkgRowsFull').innerHTML=PACKAGES.map(p=>pkgRowHTML(p,tr
 document.getElementById('svcIndex').innerHTML=SERVICES.map((s,i)=>`<div class="svc-row"><span class="idx">0${i+1}</span><span>${s}</span></div>`).join('');
 document.getElementById('procGrid').innerHTML=PROCESS.map((p,i)=>`<div><div class="idx">0${i+1}</div><h3>${p[0]}</h3><p>${p[1]}</p></div>`).join('');
 
-function galleryCard(g){const src=g.real?('/_blob/'+g.real):gimg(g.name);const capTxt=g.real?`${g.cat} · ${g.place}`:`${g.cat} · ${g.place} · Concept image`;const altTxt=g.real?`${g.t}, ${g.place}`:`${g.t}, ${g.place} — concept image`;return `<div class="gitem"><img src="${src}" alt="${altTxt}" width="600" height="500" loading="lazy"><p class="mono cap">${capTxt}</p></div>`}
+function galleryCard(g){const src=g.real?g.real:gimg(g.name);const capTxt=g.real?`${g.cat} · ${g.place}`:`${g.cat} · ${g.place} · Concept image`;const altTxt=g.real?`${g.t}, ${g.place}`:`${g.t}, ${g.place} — concept image`;return `<div class="gitem"><img src="${src}" alt="${altTxt}" width="600" height="500" loading="lazy"><p class="mono cap">${capTxt}</p></div>`}
 document.getElementById('galleryPreview').innerHTML=GALLERY.slice(0,4).map(galleryCard).join('');
 
 // seven rings
