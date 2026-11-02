@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Royal Pheras — Seven vows, planned without worry.</title>
+<meta name="description" content="Wedding planning for traditional and destination weddings across India. Three packages, one enquiry. Royal Pheras, Jaipur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14120E; --surf1:#1B1812; --surf2:#221E16;
+  --cream:#F1EADA; --cream-64:rgba(241,234,218,.64); --cream-40:rgba(241,234,218,.4);
+  --gold:#C9A45C; --gold-hi:#E5C98C; --hair:rgba(241,234,218,.16);
+  --err:#E2907B; --ok:#9DB38A;
+  color-scheme: dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  background:var(--ink); color:var(--cream); font-family:Inter,sans-serif; font-size:16.5px; line-height:1.7;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+h1,h2,h3{font-family:Gloock,serif;font-weight:400;letter-spacing:.01em}
+.gold{color:var(--gold-hi)}
+.mono{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--cream-64)}
+.eyebrow{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.hair{border-top:1px solid var(--hair)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* skip link */
+.skip{position:absolute;left:-999px;top:0;background:var(--gold);color:var(--ink);padding:10px 16px;z-index:200}
+.skip:focus{left:12px;top:12px}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:env(safe-area-inset-top,0px) 0 0;transition:background .3s,backdrop-filter .3s}
+header.solid{background:rgba(20,18,14,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.navrow{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1120px;margin:0 auto;padding:0 24px}
+.wordmark{font-family:Gloock,serif;font-size:1.3rem;letter-spacing:.02em}
+.navlinks{display:flex;gap:2rem;align-items:center}
+.navlinks a{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-64);position:relative;padding-bottom:4px}
+.navlinks a.active{color:var(--cream)}
+.navlinks a.active::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold)}
+.pill{background:var(--gold);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:12px 22px;border-radius:999px;border:none;cursor:pointer;display:inline-block}
+.pill.ghost{background:transparent;color:var(--cream);border:1px solid var(--hair)}
+.menubtn{display:none;background:none;border:none;color:var(--cream);font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;font-size:.75rem;cursor:pointer}
+@media(max-width:760px){.navlinks{display:none}.menubtn{display:block}#navPill{display:none}}
+
+/* hero */
+.hero{position:relative;height:92vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,.15),rgba(20,18,14,.92))}
+.hero-c{position:relative;z-index:2;padding:0 24px 64px;max-width:1120px;margin:0 auto;width:100%}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.08;max-width:14ch}
+.hero .mono{margin-top:1.4rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+.hero .pill{margin-top:1.6rem}
+
+/* statement */
+.statement h2{font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.4;max-width:22ch}
+.statement h2 .dim{color:var(--cream-40)}
+
+/* packages rows */
+.prow{display:flex;align-items:center;justify-content:space-between;padding:28px 0;border-top:1px solid var(--hair);gap:1rem}
+.prow:last-of-type{border-bottom:1px solid var(--hair)}
+.prow .name{font-family:Gloock,serif;font-size:1.5rem}
+.prow .tag{color:var(--cream-64);font-size:.95rem;display:block;margin-top:.2rem}
+.prow .price{font-family:'IBM Plex Mono',monospace;color:var(--gold-hi);letter-spacing:.08em;white-space:nowrap}
+.prow a{display:flex;align-items:center;gap:1.4rem;width:100%;justify-content:space-between}
+
+/* rings */
+.rings-panel{display:flex;align-items:center;gap:3rem;flex-wrap:wrap}
+.rings-panel svg{width:220px;height:220px;flex-shrink:0}
+@media(prefers-reduced-motion:reduce){.ring{animation:none!important}}
+
+/* photo full */
+.fullphoto{width:100%;height:60vh;object-fit:cover}
+.cap{padding-top:.8rem}
+
+/* services index */
+.svc-row{display:flex;gap:1.4rem;padding:20px 0;border-top:1px solid var(--hair);align-items:baseline}
+.svc-row:last-child{border-bottom:1px solid var(--hair)}
+.svc-row .idx{font-family:'IBM Plex Mono',monospace;color:var(--gold);width:2.4rem}
+
+/* gallery grid */
+.ggrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.gitem{position:relative;overflow:hidden}
+.gitem img{width:100%;height:220px;object-fit:cover;transition:transform 6.5s ease}
+.gitem:hover img{transform:scale(1.12)}
+.gitem .cap{font-size:.65rem}
+.gitem:nth-child(2){margin-top:24px}.gitem:nth-child(4){margin-top:-16px}
+@media(max-width:760px){.ggrid{grid-template-columns:repeat(2,1fr)}}
+
+/* process */
+.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:1.6rem}
+.proc .idx{font-family:'IBM Plex Mono',monospace;color:var(--gold);font-size:.8rem}
+.proc h3{font-size:1.1rem;margin:.6rem 0 .4rem}
+.proc p{color:var(--cream-64);font-size:.9rem}
+@media(max-width:860px){.proc{grid-template-columns:repeat(2,1fr)}}
+
+/* enquiry panel */
+.epanel{background:var(--surf1);border:1px solid var(--hair);padding:56px 40px;text-align:center;border-radius:4px}
+.epanel h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:1.6rem}
+.ebtns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem}
+
+/* footer */
+footer{padding:80px 0 40px;border-top:1px solid var(--hair)}
+.fwordmark{font-size:clamp(2.2rem,8vw,4.5rem);font-family:Gloock,serif;margin-bottom:3rem}
+.fcols{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.fcols a,.fcols div{display:block;color:var(--cream-64);font-size:.92rem;margin-bottom:.6rem}
+.fcols h4{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.2em;color:var(--gold);margin-bottom:1rem;text-transform:uppercase}
+.fineprint{margin-top:3rem;color:var(--cream-40);font-size:.68rem}
+@media(max-width:760px){.fcols{grid-template-columns:1fr;gap:1.6rem}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* form */
+.formgroup{margin-bottom:2.4rem}
+.formgroup h3{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.2em;color:var(--gold);margin-bottom:1.2rem;text-transform:uppercase}
+.field{margin-bottom:1.2rem}
+.field label{display:block;font-size:.85rem;color:var(--cream-64);margin-bottom:.4rem}
+.field input,.field select,.field textarea{width:100%;background:var(--surf1);border:1px solid var(--hair);color:var(--cream);padding:12px 14px;border-radius:3px;font-family:Inter,sans-serif;font-size:.95rem}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.field .err{color:var(--err);font-size:.8rem;margin-top:.4rem;display:none}
+.field.invalid .err{display:block}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--err)}
+.chiprow{display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{border:1px solid var(--hair);padding:8px 14px;border-radius:999px;font-size:.82rem;cursor:pointer;background:transparent;color:var(--cream)}
+.chip.sel{border-color:var(--gold);color:var(--gold-hi)}
+.consent{display:flex;gap:.6rem;align-items:flex-start;margin:2rem 0}
+.counter{text-align:right;font-size:.75rem;color:var(--cream-40);margin-top:.3rem}
+
+/* page toggle */
+.page{display:none}
+.page.active{display:block}
+.filterchips{display:flex;gap:.6rem;margin-bottom:2rem;flex-wrap:wrap}
+
+/* toast */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surf2);border:1px solid var(--gold);padding:14px 22px;border-radius:4px;font-size:.9rem;opacity:0;pointer-events:none;transition:.3s;z-index:300}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header id="siteHeader">
+  <div class="navrow">
+    <a href="#/" class="wordmark">Royal Pheras</a>
+    <nav class="navlinks" id="navlinks">
+      <a href="#/packages" data-route="/packages">Packages</a>
+      <a href="#/gallery" data-route="/gallery">Gallery</a>
+      <a href="#process-anchor" data-route="process">Process</a>
+      <a href="#contact-anchor" data-route="contact">Contact</a>
+      <a href="#/enquire" class="pill" id="navPill">Plan my wedding</a>
+    </nav>
+    <button class="menubtn" id="menuBtn">Menu</button>
+  </div>
+</header>
+<button class="menubtn" id="menuCloseBtn" style="display:none;position:fixed;top:calc(20px + env(safe-area-inset-top,0px));right:24px;z-index:160">Close</button>
+
+<main id="main">
+
+<!-- HOME -->
+<div class="page" id="page-home">
+  <section class="hero">
+    <img src="/_blob/1fec4101de09a244e025f9954d0a3b44" alt="A candlelit red rose archway walkway leading to a wedding mandap at night" fetchpriority="high" width="1024" height="683">
+    <div class="hero-c">
+      <h1>Seven vows, <span class="gold">planned without worry.</span></h1>
+      <div class="mono"><span>Jaipur · Serving across India</span><span>Now taking dates from March 2027</span></div>
+      <a href="#/enquire" class="pill">Plan my wedding</a>
+    </div>
+  </section>
+
+  <section class="statement wrap reveal">
+    <h2>We plan every phera so you can simply <span class="dim">be present for your own wedding.</span></h2>
+  </section>
+
+  <section class="wrap reveal">
+    <div class="eyebrow mono">Packages</div>
+    <div id="pkgRowsHome"></div>
+    <p style="margin-top:1.6rem"><a href="#/packages" class="mono gold">Compare all three →</a></p>
+  </section>
+
+  <section class="wrap reveal rings-panel">
+    <svg viewBox="0 0 220 220" aria-hidden="true">
+      <circle cx="110" cy="110" r="6" fill="var(--gold)"/>
+      <g id="ringGroup"></g>
+    </svg>
+    <div>
+      <h2 style="font-size:1.9rem">One for every phera.</h2>
+      <p class="mono" style="margin-top:.8rem">Seven rings. Seven vows. One plan.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <img class="fullphoto" src="/_blob/a84cb61c4aa572332c4309d2e862d4fb" alt="A grand marigold-garlanded entrance gate lit with brass lamps at a wedding venue" width="1024" height="683" loading="lazy">
+    <div class="wrap"><p class="mono cap">Grand entrance, Jaipur</p></div>
+  </section>
+
+  <section class="wrap reveal">
+    <div class="eyebrow mono">Services</div>
+    <div id="svcIndex"></div>
+  </section>
+
+  <section class="wrap reveal">
+    <div class="eyebrow mono">From the gallery</div>
+    <div class="ggrid" id="galleryPreview"></div>
+  </section>
+
+  <section class="wrap reveal" id="process-anchor">
+    <div class="eyebrow mono">Process</div>
+    <div class="proc" id="procGrid"></div>
+  </section>
+
+  <section class="wrap reveal">
+    <div class="epanel">
+      <h2>Now taking dates from <span class="gold">March 2027.</span></h2>
+      <div class="ebtns">
+        <a href="#/enquire" class="pill">Plan my wedding</a>
+        <a href="https://wa.me/919876543210?text=Hello%20Royal%20Pheras%2C%20I%20found%20your%20website%20and%20would%20like%20to%20plan%20a%20wedding." class="pill ghost">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PACKAGES PAGE -->
+<div class="page" id="page-packages">
+  <section class="wrap" style="padding-top:140px">
+    <div class="eyebrow mono">Packages</div>
+    <h2 style="font-size:2rem;margin-bottom:2rem">Compare the three ways we plan.</h2>
+    <div id="pkgRowsFull"></div>
+    <p class="mono" style="margin-top:2rem;color:var(--cream-40)">Prices are starting prices — the final quote follows a consultation.</p>
+  </section>
+</div>
+
+<!-- GALLERY PAGE -->
+<div class="page" id="page-gallery">
+  <section class="wrap" style="padding-top:140px">
+    <div class="eyebrow mono">Gallery</div>
+    <div class="filterchips" id="galleryChips"></div>
+    <div class="ggrid" id="galleryFull"></div>
+    <div class="epanel reveal in" style="margin-top:4rem">
+      <h2 style="font-size:1.6rem">Like what you see?</h2>
+      <div class="ebtns">
+        <a href="#/packages" class="pill ghost">View packages</a>
+        <a href="#/enquire" class="pill">Plan my wedding</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ENQUIRE PAGE -->
+<div class="page" id="page-enquire">
+  <section class="wrap" style="padding-top:140px;max-width:720px">
+    <div class="eyebrow mono">Enquire</div>
+    <h2 style="font-size:1.9rem;margin-bottom:2.4rem">Tell us about your wedding.</h2>
+    <form id="enquireForm" novalidate>
+      <input type="text" name="website" id="honeypot" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <div class="formgroup">
+        <h3>01 · You</h3>
+        <div class="field" data-field="name"><label for="f-name">Full name</label><input id="f-name" name="name" required><div class="err">Please tell us your name.</div></div>
+        <div class="field" data-field="phone"><label for="f-phone">Phone</label><input id="f-phone" name="phone" required><div class="err">Please enter a valid phone number, with country code if outside India.</div></div>
+        <div class="field" data-field="email"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required><div class="err">Please enter a valid email so we can confirm your enquiry.</div></div>
+      </div>
+      <div class="formgroup">
+        <h3>02 · The wedding</h3>
+        <div class="field" data-field="type"><label for="f-type">Wedding type</label>
+          <select id="f-type" name="type" required><option value="">Choose…</option><option>Traditional</option><option>Destination</option><option>Both</option><option>Not sure yet</option></select>
+          <div class="err">Please choose a wedding type.</div></div>
+        <div class="field" data-field="date"><label for="f-date">Wedding date</label><input id="f-date" name="date" type="date">
+          <label style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem;font-size:.82rem;color:var(--cream-64)"><input type="checkbox" id="f-notdecided" style="width:auto"> Not decided yet</label>
+          <div class="err">Please choose a date in the future.</div></div>
+        <div class="field"><label for="f-city">City or destination</label><input id="f-city" name="city" maxlength="120"></div>
+        <div class="field"><label>Guest range</label><select name="guests"><option value="">Choose…</option><option>Under 100</option><option>100–250</option><option>250–500</option><option>Over 500</option><option>Not sure yet</option></select></div>
+        <div class="field"><label>Budget range</label><select name="budget"><option value="">Choose…</option><option>Under ₹5 lakh</option><option>₹5–10 lakh</option><option>₹10–25 lakh</option><option>₹25–50 lakh</option><option>Over ₹50 lakh</option><option>Prefer to discuss</option></select></div>
+        <div class="field"><label>Events</label><div class="chiprow" id="eventsChips"></div></div>
+        <div class="field"><label>Package</label><div class="chiprow" id="pkgChips"></div></div>
+      </div>
+      <div class="formgroup">
+        <h3>03 · Anything else</h3>
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" rows="4" maxlength="1000"></textarea><div class="counter" id="msgCounter">0 / 1000</div></div>
+        <div class="field"><label>How did you hear about us?</label><select name="source"><option value="">Choose…</option><option>Instagram</option><option>Google</option><option>Friend or family</option><option>Wedding fair</option><option>Other</option></select></div>
+      </div>
+      <div class="field consent" data-field="consent">
+        <input type="checkbox" id="f-consent" name="consent" style="width:auto;margin-top:.3rem">
+        <label for="f-consent" style="margin:0">I agree to be contacted about my enquiry. See our <a href="#/privacy" class="gold">privacy notice</a>.</label>
+      </div>
+      <div class="field invalid" style="display:none" id="consentErr"><div class="err" style="display:block">Please tick the box so we may contact you.</div></div>
+      <button type="submit" class="pill" id="submitBtn" style="width:100%;padding:16px">Send enquiry</button>
+    </form>
+  </section>
+</div>
+
+<!-- THANK YOU -->
+<div class="page" id="page-thankyou">
+  <section class="wrap" style="padding-top:160px;max-width:600px;text-align:center">
+    <div class="eyebrow mono" style="justify-content:center">Enquiry sent</div>
+    <h2 style="font-size:2rem">Thank you.</h2>
+    <p class="mono gold" style="margin:1.2rem 0;font-size:1rem" id="refCode"></p>
+    <p style="color:var(--cream-64)">We've received your enquiry and will call within one working day. A confirmation has been sent to your email.</p>
+    <div class="ebtns"><a href="https://wa.me/919876543210?text=Hello%20Royal%20Pheras%2C%20I%20found%20your%20website%20and%20would%20like%20to%20plan%20a%20wedding." class="pill ghost">Message us on WhatsApp</a></div>
+  </section>
+</div>
+
+<!-- PRIVACY -->
+<div class="page" id="page-privacy">
+  <section class="wrap" style="padding-top:140px;max-width:680px">
+    <div class="eyebrow mono">Privacy</div>
+    <h2 style="font-size:1.8rem;margin-bottom:1.5rem">Privacy notice</h2>
+    <p style="color:var(--cream-64)">We collect the details you submit in our enquiry form — your name, contact information and wedding details — to respond to your enquiry and plan your wedding if you choose to work with us. This information is shared with our hosting and database provider and our email provider solely to operate the site and contact you. We retain enquiry details for as long as needed to respond to you, or until you ask us to delete them. To request deletion, email hello@royalpheras.in.</p>
+  </section>
+</div>
+
+<!-- 404 -->
+<div class="page" id="page-404">
+  <section class="wrap" style="padding-top:160px;text-align:center;max-width:500px">
+    <h2 style="font-size:2rem">We couldn't find that page.</h2>
+    <div class="ebtns"><a href="#/" class="pill">Home</a><a href="#/enquire" class="pill ghost">Plan my wedding</a></div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fwordmark">Royal Pheras</div>
+    <div class="fcols">
+      <div><h4>Explore</h4><a href="#/packages">Packages</a><a href="#/gallery">Gallery</a><a href="#process-anchor">Process</a><a href="#/privacy">Privacy</a></div>
+      <div><h4>Contact</h4><div>Jaipur, Rajasthan</div><a href="tel:+919876543210">+91 98765 43210</a><a href="mailto:hello@royalpheras.in">hello@royalpheras.in</a><a href="https://wa.me/919876543210">WhatsApp</a></div>
+      <div id="contact-anchor"><h4>Hours &amp; social</h4><div>Mon–Sat 10 a.m.–7 p.m. IST</div><a href="https://instagram.com/royalpheras">Instagram @royalpheras</a><div style="margin-top:.6rem;color:var(--cream-40)">We reply within one working day.</div></div>
+    </div>
+    <p class="fineprint">All photographs are AI concept images until real wedding photography replaces them.</p>
+  </div>
+</footer>
+
+<div id="toast" role="status"></div>
+
+<script>
+const PACKAGES=[
+ {id:'shagun',name:'Shagun',tag:'An intimate beginning, planned end to end.',price:'₹3,50,000',who:'Small, close-family celebrations.',guests:'Up to 150 guests',events:'Up to 2 events',inc:['Planning kickoff and budget tracker','Venue shortlist of three','Vendor shortlists for caterer, decorator and photographer','One mandap design from our curated set','Guest list and invitation timeline','Day-of coordination for the wedding and reception']},
+ {id:'baraat',name:'Baraat',tag:'The full celebration, from roka to vidaai.',price:'₹9,00,000',who:'150–400 guests.',guests:'150–400 guests',events:'Up to 4 events',inc:['Everything in Shagun','Custom mandap and decor design','Full vendor management and negotiation','Baraat and transport planning','Guest hospitality desk on the wedding day','Music and entertainment coordination','A dedicated planner and coordinator with weekly check-ins']},
+ {id:'rajwada',name:'Rajwada',tag:'Palaces, destinations, and every detail carried.',price:'₹25,00,000',who:'400+ guests or any destination.',guests:'400+ guests or destination',events:'Up to 6 events over 3–5 days',inc:['Everything in Baraat','Destination or palace venue scouting','Guest travel, stays and arrivals','Bespoke design and production','Ritual and pandit coordination','An on-site team throughout','Post-wedding wrap-up and photo-delivery follow-up']}
+];
+const SERVICES=['Planning & coordination','Mandap & decor design','Vendor curation','Guest hospitality','Destination logistics','On-the-day management'];
+const PROCESS=[['Enquire','Two-minute form, no commitment.'],['Consultation','A call within one working day.'],['Proposal','A clear plan and quote.'],['Planning','Weekly check-ins, shared tracker.'],['The wedding days','An on-site team runs the schedule.']];
+const GALLERY=[
+ {cat:'Ceremonies',place:'Jaipur',name:'agni-pheras',t:'Havan ceremony with family',real:'970b11d4cdb89c7bafe972f8186fd9e3'},
+ {cat:'Ceremonies',place:'Udaipur',name:'baraat-horse',t:'Baraat horse silhouette at dusk'},
+ {cat:'Ceremonies',place:'Jodhpur',name:'varmala',t:'Varmala hands raising marigold garlands'},
+ {cat:'Ceremonies',place:'Jaipur',name:'vidaai',t:'Vidaai petals in farewell'},
+ {cat:'Decor',place:'Udaipur',name:'floral-aisle',t:'Red floral mandap aisle',real:'4e7503a0c23786fc58b12484b70c0180'},
+ {cat:'Decor',place:'Udaipur',name:'reception-tables',t:'Hanging floral chandelier reception',real:'91fe6bfb91ba445836f0a987d40afbd2'},
+ {cat:'Decor',place:'Jaipur',name:'brass-canopy',t:'Fairy-light entrance canopy',real:'102ed8eb829b3e8ffeec3cb927298e07'},
+ {cat:'Decor',place:'Jaipur',name:'entrance-gate',t:'Wooden garden entrance',real:'a542e4f5293a3f3535c3096dd323d211'},
+ {cat:'Destinations',place:'Udaipur',name:'lake-palace',t:'Floral palace archway swing',real:'b189f920eeee78dbcc5bc87978422175'},
+ {cat:'Destinations',place:'Jaisalmer',name:'desert-camp',t:'Desert camp at dusk'},
+ {cat:'Destinations',place:'Goa',name:'beach-mandap',t:'Driftwood beach mandap'},
+ {cat:'Destinations',place:'Shimla',name:'hill-lawn',t:'Misty hill-resort lawn'},
+ {cat:'Details',place:'Jaipur',name:'mehendi-hands',t:'Ring on a hennaed hand',real:'e75bf76097b51dbb9e3ec4e487178b9f'},
+ {cat:'Details',place:'Udaipur',name:'invitation-suite',t:'Letterpress invitation suite'},
+ {cat:'Details',place:'Jodhpur',name:'haldi-bowls',t:'Haldi bowls on brass'},
+ {cat:'Details',place:'Jaipur',name:'polki-jewellery',t:'Mehendi hands with bangles',real:'a82a7debfdbd659a2600cadd29c3a133'}
+];
+
+function gimg(seed){return `https://picsum.photos/seed/pheras-${seed}/600/500`}
+
+// package rows (home + full)
+function pkgRowHTML(p,full){
+  return `<div class="prow"><a href="#/packages"><div><span class="name">${p.name}</span><span class="tag">${p.tag}</span></div><span class="price">From ${p.price}</span></div></a>`+
+  (full?`<div style="padding:0 0 24px;color:var(--cream-64)"><p style="margin-bottom:.6rem"><strong style="color:var(--cream)">${p.who}</strong> · ${p.guests} · ${p.events}</p><ul style="margin-left:1.2rem;font-size:.92rem">${p.inc.map(i=>`<li style="margin-bottom:.3rem">${i}</li>`).join('')}</ul><a href="#/enquire?package=${p.id}" class="pill" style="margin-top:1rem">Enquire about this package</a></div>`:'')+`</div>`;
+}
+document.getElementById('pkgRowsHome').innerHTML=PACKAGES.map(p=>pkgRowHTML(p,false)).join('');
+document.getElementById('pkgRowsFull').innerHTML=PACKAGES.map(p=>pkgRowHTML(p,true)).join('');
+
+document.getElementById('svcIndex').innerHTML=SERVICES.map((s,i)=>`<div class="svc-row"><span class="idx">0${i+1}</span><span>${s}</span></div>`).join('');
+document.getElementById('procGrid').innerHTML=PROCESS.map((p,i)=>`<div><div class="idx">0${i+1}</div><h3>${p[0]}</h3><p>${p[1]}</p></div>`).join('');
+
+function galleryCard(g){const src=g.real?('/_blob/'+g.real):gimg(g.name);const capTxt=g.real?`${g.cat} · ${g.place}`:`${g.cat} · ${g.place} · Concept image`;const altTxt=g.real?`${g.t}, ${g.place}`:`${g.t}, ${g.place} — concept image`;return `<div class="gitem"><img src="${src}" alt="${altTxt}" width="600" height="500" loading="lazy"><p class="mono cap">${capTxt}</p></div>`}
+document.getElementById('galleryPreview').innerHTML=GALLERY.slice(0,4).map(galleryCard).join('');
+
+// seven rings
+const ringGroup=document.getElementById('ringGroup');
+for(let i=0;i<7;i++){
+  const r=24+i*13, dur=26+i*(32/6), dir=i%2?'reverse':'normal';
+  const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+  c.setAttribute('cx',110);c.setAttribute('cy',110);c.setAttribute('r',r);
+  c.setAttribute('fill','none');c.setAttribute('stroke','var(--gold)');c.setAttribute('stroke-width','1');
+  c.setAttribute('stroke-dasharray','4 6');c.setAttribute('opacity','0.75');
+  c.classList.add('ring');
+  c.style.transformOrigin='110px 110px';
+  c.style.animation=`spin${i} ${dur}s linear infinite ${dir}`;
+  ringGroup.appendChild(c);
+}
+const ringStyleEl=document.createElement('style');
+ringStyleEl.textContent=Array.from({length:7},(_,i)=>`@keyframes spin${i}{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`).join('\n');
+document.head.appendChild(ringStyleEl);
+
+// gallery full + filter
+let currentCat='All';
+function renderGalleryFull(){
+  const items = currentCat==='All'?GALLERY:GALLERY.filter(g=>g.cat===currentCat);
+  const el=document.getElementById('galleryFull');
+  if(!items.length){el.innerHTML=`<p style="color:var(--cream-64)">No images in this category yet. <a href="#" class="gold" onclick="setCat('All');return false;">View all</a></p>`;return;}
+  el.innerHTML=items.map(galleryCard).join('');
+}
+function setCat(c){currentCat=c; renderChips(); renderGalleryFull(); location.hash='#/gallery'+(c==='All'?'':`?category=${c.toLowerCase()}`);}
+function renderChips(){
+  const cats=['All','Ceremonies','Decor','Destinations','Details'];
+  document.getElementById('galleryChips').innerHTML=cats.map(c=>`<button class="chip ${c===currentCat?'sel':''}" onclick="setCat('${c}')">${c}</button>`).join('');
+}
+renderChips();
+
+// enquire chips
+const EVENTS=['Roka','Haldi','Mehendi','Sangeet','Wedding','Reception'];
+let selEvents=[];
+document.getElementById('eventsChips').innerHTML=EVENTS.map(e=>`<button type="button" class="chip" data-ev="${e}">${e}</button>`).join('');
+document.getElementById('eventsChips').addEventListener('click',e=>{
+  if(e.target.matches('.chip')){e.target.classList.toggle('sel');
+    selEvents=[...document.querySelectorAll('#eventsChips .chip.sel')].map(c=>c.dataset.ev);}
+});
+let selPkg='';
+document.getElementById('pkgChips').innerHTML=['Shagun','Baraat','Rajwada','Not sure yet'].map(p=>`<button type="button" class="chip" data-pk="${p}">${p}</button>`).join('');
+document.getElementById('pkgChips').addEventListener('click',e=>{
+  if(e.target.matches('.chip')){[...document.querySelectorAll('#pkgChips .chip')].forEach(c=>c.classList.remove('sel'));
+    e.target.classList.add('sel'); selPkg=e.target.dataset.pk;}
+});
+
+// message counter
+const msgEl=document.getElementById('f-msg');
+msgEl.addEventListener('input',()=>{document.getElementById('msgCounter').textContent=`${msgEl.value.length} / 1000`;});
+
+// not decided checkbox disables date
+document.getElementById('f-notdecided').addEventListener('change',e=>{
+  document.getElementById('f-date').disabled=e.target.checked;
+  if(e.target.checked)document.getElementById('f-date').value='';
+});
+
+// validation
+function validatePhone(v){return /^(\+?91)?[6-9]\d{9}$/.test(v.replace(/\s/g,''))||/^\+?\d{8,15}$/.test(v.replace(/\s/g,''));}
+function validateEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+function setInvalid(field,bad){
+  const el=document.querySelector(`.field[data-field="${field}"]`);
+  if(el)el.classList.toggle('invalid',bad);
+  return !bad;
+}
+function validateField(name){
+  const f=document.getElementById('enquireForm');
+  if(name==='name')return setInvalid('name',!f.name.value.trim());
+  if(name==='phone')return setInvalid('phone',!validatePhone(f.phone.value||''));
+  if(name==='email')return setInvalid('email',!validateEmail(f.email.value||''));
+  if(name==='type')return setInvalid('type',!f.type.value);
+  if(name==='date'){
+    const notDec=document.getElementById('f-notdecided').checked;
+    if(notDec)return setInvalid('date',false);
+    const d=f.date.value; const bad=!d || new Date(d) <= new Date();
+    return setInvalid('date',bad);
+  }
+  if(name==='consent'){
+    const bad=!document.getElementById('f-consent').checked;
+    document.getElementById('consentErr').style.display=bad?'block':'none';
+    return !bad;
+  }
+  return true;
+}
+['name','phone','email','type','date'].forEach(n=>{
+  const input=document.querySelector(`[data-field="${n}"] input, [data-field="${n}"] select`);
+  if(input)input.addEventListener('blur',()=>validateField(n));
+});
+
+let refSeq=1;
+document.getElementById('enquireForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  if(document.getElementById('honeypot').value){ showToast('Thank you — your enquiry has been sent.'); showPage('thankyou'); return; }
+  const fields=['name','phone','email','type','date','consent'];
+  let firstBad=null;
+  fields.forEach(n=>{ const ok=validateField(n); if(!ok && !firstBad) firstBad=n; });
+  if(firstBad){
+    const el=document.querySelector(`[data-field="${firstBad}"] input, [data-field="${firstBad}"] select, #f-consent`);
+    if(el)el.focus();
+    showToast('Please check the highlighted fields.');
+    return;
+  }
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='Sending…'; btn.disabled=true;
+  setTimeout(()=>{
+    const ref=`RP-2026-${String(refSeq++).padStart(4,'0')}`;
+    document.getElementById('refCode').textContent=ref;
+    btn.textContent='Send enquiry'; btn.disabled=false;
+    showPage('thankyou');
+    window.location.hash='#/enquire/thank-you';
+  },900);
+});
+
+function showToast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// routing
+const routes=['home','packages','gallery','enquire','thankyou','privacy','404'];
+function showPage(id){
+  routes.forEach(r=>document.getElementById('page-'+r).classList.toggle('active',r===id));
+}
+function router(){
+  let hash=location.hash||'#/';
+  if(hash==='#/'||hash===''){showPage('home');}
+  else if(hash.startsWith('#/packages')){showPage('packages');}
+  else if(hash.startsWith('#/gallery')){
+    const m=hash.match(/category=([a-z]+)/);
+    currentCat = m ? (m[1][0].toUpperCase()+m[1].slice(1)) : 'All';
+    renderChips(); renderGalleryFull(); showPage('gallery');
+  }
+  else if(hash.startsWith('#/enquire/thank-you')){
+    if(!document.getElementById('refCode').textContent){location.hash='#/enquire';return;}
+    showPage('thankyou');
+  }
+  else if(hash.startsWith('#/enquire')){
+    const m=hash.match(/package=([a-z]+)/);
+    if(m){const chip=document.querySelector(`#pkgChips .chip[data-pk]`);
+      const match=[...document.querySelectorAll('#pkgChips .chip')].find(c=>c.dataset.pk.toLowerCase()===m[1]);
+      if(match){[...document.querySelectorAll('#pkgChips .chip')].forEach(c=>c.classList.remove('sel'));match.classList.add('sel');}
+    }
+    showPage('enquire');
+  }
+  else if(hash.startsWith('#/privacy')){showPage('privacy');}
+  else{showPage('404');}
+  document.querySelectorAll('.navlinks a[data-route]').forEach(a=>a.classList.toggle('active', hash.startsWith('#'+a.dataset.route)));
+  document.getElementById('navPill').style.display = hash.startsWith('#/enquire') ? 'none':'inline-block';
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',router);
+router();
+
+// header scroll + reveal
+window.addEventListener('scroll',()=>{document.getElementById('siteHeader').classList.toggle('solid',window.scrollY>80);});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// mobile menu (full-screen overlay with its own close button)
+const navEl=document.getElementById('navlinks');
+const closeBtn=document.getElementById('menuCloseBtn');
+function openMenu(){
+  navEl.style.cssText='display:flex;position:fixed;inset:0;z-index:150;flex-direction:column;justify-content:center;align-items:center;background:var(--ink);font-size:1.4rem;gap:2rem;';
+  closeBtn.style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closeMenu(){
+  navEl.style.cssText='';
+  closeBtn.style.display='none';
+  document.body.style.overflow='';
+}
+document.getElementById('menuBtn').addEventListener('click',openMenu);
+closeBtn.addEventListener('click',closeMenu);
+navEl.addEventListener('click',e=>{ if(e.target.tagName==='A') closeMenu(); });
+window.addEventListener('hashchange',closeMenu);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
+</script>
+</body>
+</html>
+<!-- assets capability declared on publish -->
