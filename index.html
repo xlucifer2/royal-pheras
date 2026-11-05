@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Royal Pheras — Seven vows, planned without worry.</title>
-<meta name="description" content="Wedding planning for traditional and destination weddings across India. Three packages, one enquiry. Royal Pheras, Jaipur.">
+<meta name="description" content="Wedding planning for traditional and destination weddings across India. Three packages, one enquiry. Royal Pheras, Jaipur." id="metaDesc">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -153,7 +153,7 @@ footer{padding:80px 0 40px;border-top:1px solid var(--hair)}
 
 <header id="siteHeader">
   <div class="navrow">
-    <a href="#/" class="wordmark">Royal Pheras</a>
+    <a href="#/" class="wordmark" id="siteWordmark"><span class="biz-name">Royal Pheras</span></a>
     <nav class="navlinks" id="navlinks">
       <a href="#/packages" data-route="/packages">Packages</a>
       <a href="#/gallery" data-route="/gallery">Gallery</a>
@@ -331,7 +331,7 @@ footer{padding:80px 0 40px;border-top:1px solid var(--hair)}
 
 <footer>
   <div class="wrap">
-    <div class="fwordmark">Royal Pheras</div>
+    <div class="fwordmark"><span class="biz-name">Royal Pheras</span></div>
     <div class="fcols">
       <div><h4>Explore</h4><a href="#/packages">Packages</a><a href="#/gallery">Gallery</a><a href="#process-anchor">Process</a><a href="#/privacy">Privacy</a></div>
       <div><h4>Contact</h4><div>Jaipur, Rajasthan</div><a href="tel:+919876543210">+91 98765 43210</a><a href="mailto:hello@royalpheras.in">hello@royalpheras.in</a><a href="https://wa.me/919876543210">WhatsApp</a></div>
@@ -562,6 +562,62 @@ closeBtn.addEventListener('click',closeMenu);
 navEl.addEventListener('click',e=>{ if(e.target.tagName==='A') closeMenu(); });
 window.addEventListener('hashchange',closeMenu);
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
+
+// ─── Client personalisation (URL params: ?biz=…&logo=…) ───────────────────
+(function(){
+  const params  = new URLSearchParams(location.search);
+  const biz     = params.get('biz');     // already decoded: + → space
+  const logoUrl = params.get('logo');    // direct image URL or null
+
+  /* 1 ── Business name ---------------------------------------------------- */
+  if (biz) {
+    // Replace text in every tagged element
+    document.querySelectorAll('.biz-name').forEach(el => { el.textContent = biz; });
+
+    // Update <title>
+    document.title = document.title.replace('Royal Pheras', biz);
+
+    // Update meta description
+    const metaDesc = document.getElementById('metaDesc');
+    if (metaDesc) metaDesc.content = metaDesc.content.replace('Royal Pheras', biz);
+  }
+
+  /* 2 ── Logo / wordmark --------------------------------------------------- */
+  const wordmark = document.getElementById('siteWordmark');
+  if (!wordmark) return;
+
+  if (logoUrl) {
+    // Client supplied a logo image URL → prepend it to the wordmark link
+    const img = document.createElement('img');
+    img.src   = logoUrl;
+    img.alt   = (biz || 'Royal Pheras') + ' logo';
+    img.style.cssText = [
+      'height:34px', 'width:auto', 'vertical-align:middle',
+      'margin-right:.55rem', 'border-radius:4px',
+      'object-fit:contain', 'flex-shrink:0'
+    ].join(';');
+    img.onerror = () => img.style.display = 'none'; // silent fallback if URL is broken
+    wordmark.prepend(img);
+
+  } else if (biz) {
+    // No logo URL but we have a name → show a monogram badge
+    const letter = biz.trim()[0].toUpperCase();
+    const badge  = document.createElement('span');
+    badge.textContent   = letter;
+    badge.setAttribute('aria-hidden', 'true');
+    badge.style.cssText = [
+      'display:inline-flex', 'align-items:center', 'justify-content:center',
+      'width:30px', 'height:30px', 'border-radius:7px',
+      'background:var(--gold)', 'color:var(--ink)',
+      'font-family:"IBM Plex Mono",monospace', 'font-size:.9rem', 'font-weight:600',
+      'vertical-align:middle', 'margin-right:.55rem', 'flex-shrink:0',
+      'line-height:1'
+    ].join(';');
+    wordmark.prepend(badge);
+  }
+  // If neither biz nor logo is set, nothing changes — default demo view is preserved.
+})();
+// ──────────────────────────────────────────────────────────────────────────────
 </script>
 </body>
 </html>
