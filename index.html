@@ -52,6 +52,32 @@ header.solid{background:rgba(20,18,14,.86);backdrop-filter:blur(10px);border-bot
 .menubtn{display:none;background:none;border:none;color:var(--cream);font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;font-size:.75rem;cursor:pointer}
 @media(max-width:760px){.navlinks{display:none}.menubtn{display:block}#navPill{display:none}}
 
+/* ── Mobile full-screen overlay (outside header — avoids backdrop-filter trap) */
+#mobileOverlay{
+  display:none;position:fixed;inset:0;z-index:200;
+  flex-direction:column;justify-content:center;align-items:center;
+  background:var(--ink);gap:2.4rem;
+}
+#mobileOverlay.open{display:flex}
+#mobileOverlay a{
+  font-family:'IBM Plex Mono',monospace;font-size:.88rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cream-64);text-decoration:none;
+  transition:color .2s;
+}
+#mobileOverlay a:hover,#mobileOverlay a:focus{color:var(--cream)}
+#mobileOverlay .mob-pill{
+  background:var(--gold);color:var(--ink);padding:13px 30px;
+  border-radius:999px;margin-top:.6rem;font-size:.8rem;
+}
+#mobileOverlay .mob-pill:hover{background:var(--gold-hi);color:var(--ink)}
+#mobCloseBtn{
+  position:absolute;top:calc(22px + env(safe-area-inset-top,0px));right:24px;
+  background:none;border:none;color:var(--cream);cursor:pointer;
+  font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;
+  text-transform:uppercase;font-size:.75rem;
+}
+
 /* hero */
 .hero{position:relative;height:92vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden}
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -164,7 +190,17 @@ footer{padding:80px 0 40px;border-top:1px solid var(--hair)}
     <button class="menubtn" id="menuBtn">Menu</button>
   </div>
 </header>
-<button class="menubtn" id="menuCloseBtn" style="display:none;position:fixed;top:calc(20px + env(safe-area-inset-top,0px));right:24px;z-index:160">Close</button>
+
+<!-- Mobile full-screen nav overlay — intentionally OUTSIDE <header> -->
+<div id="mobileOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <button id="mobCloseBtn" aria-label="Close menu">✕ Close</button>
+  <a href="#/">Home</a>
+  <a href="#/packages">Packages</a>
+  <a href="#/gallery">Gallery</a>
+  <a href="#process-anchor">Process</a>
+  <a href="#contact-anchor">Contact</a>
+  <a href="#/enquire" class="mob-pill">Plan my wedding</a>
+</div>
 
 <main id="main">
 
@@ -544,24 +580,25 @@ window.addEventListener('scroll',()=>{document.getElementById('siteHeader').clas
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// mobile menu (full-screen overlay with its own close button)
-const navEl=document.getElementById('navlinks');
-const closeBtn=document.getElementById('menuCloseBtn');
+// ── Mobile menu — overlay lives outside <header> (fixes backdrop-filter containment bug)
+const mobileOverlay = document.getElementById('mobileOverlay');
 function openMenu(){
-  navEl.style.cssText='display:flex;position:fixed;inset:0;z-index:150;flex-direction:column;justify-content:center;align-items:center;background:var(--ink);font-size:1.4rem;gap:2rem;';
-  closeBtn.style.display='block';
+  mobileOverlay.classList.add('open');
+  mobileOverlay.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
+  document.getElementById('mobCloseBtn').focus();
 }
 function closeMenu(){
-  navEl.style.cssText='';
-  closeBtn.style.display='none';
+  mobileOverlay.classList.remove('open');
+  mobileOverlay.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
+  document.getElementById('menuBtn').focus();
 }
-document.getElementById('menuBtn').addEventListener('click',openMenu);
-closeBtn.addEventListener('click',closeMenu);
-navEl.addEventListener('click',e=>{ if(e.target.tagName==='A') closeMenu(); });
-window.addEventListener('hashchange',closeMenu);
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
+document.getElementById('menuBtn').addEventListener('click', openMenu);
+document.getElementById('mobCloseBtn').addEventListener('click', closeMenu);
+mobileOverlay.addEventListener('click', e=>{ if(e.target.tagName==='A') closeMenu(); });
+window.addEventListener('hashchange', closeMenu);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeMenu(); });
 
 // ─── Client personalisation (URL params: ?biz=…&logo=…) ───────────────────
 (function(){
